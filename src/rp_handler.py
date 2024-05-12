@@ -1,6 +1,7 @@
 import io
 import os
 import argparse
+import base64
 # runpod utils
 import runpod
 from runpod.serverless.utils.rp_validator import validate
@@ -36,7 +37,7 @@ def upload_result(result: io.BytesIO, key: str) -> str:
             }
         )
     # Base64 encode
-    return result.decode('UTF-8')
+    return base64.b64encode(result.getvalue()).decode("utf-8")
 
 
 def run(job):
